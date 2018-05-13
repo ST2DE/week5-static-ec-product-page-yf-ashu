@@ -1,0 +1,61 @@
+//Global
+* {
+  box-sizing: border-box;
+}
+
+@mixin size($w, $h) {
+  width: $w;
+  height: $h;
+}
+
+//Color
+$backgroundColor: #f4f4f4;
+//Setting
+body,
+html {
+  @include size(100%, 100%);
+  background-color: $backgroundColor;
+}
+
+.wrapper {
+  @include size(100%, 100%);
+  display: grid;
+  border: #000 solid 1px; // grid-template-rows: 20% 40% auto;
+  grid-template-columns: repeat(auto-fill,mixmax(100px,1fr));
+  // grid-template-areas: "a a a" "b b b" "c c c";
+  // grid-gap: 10px;
+  // grid-auto-columns: 1fr;//自動分出格線
+  // grid-auto-rows: 1fr;
+}
+
+.header {
+  border: #000 solid 1px; // grid-area: a;
+  grid-row: 1/3;
+  grid-column: 1/3;
+  background-color: paleturquoise;
+  display: grid;
+  justify-content: center;
+}
+
+.main {
+  border: #000 solid 1px; // grid-area: b;
+  grid-row: 2/3;
+  grid-column: 1/-1; //從第幾條線到第幾條線
+  background-color: palegoldenrod;
+  // mixmax
+}
+
+.footer {
+  border: #000 solid 1px; // grid-area: c;
+  grid-row: 2/-1;
+  grid-column: 2/3;
+  background-color: palevioletred;
+}
+
+//Header
+@media screen and (max-width: 600px) {
+  .wrapper {
+    border: #000 solid 1px;
+    grid-template-areas: "b b a" "b b a" "c c c";
+  }
+}

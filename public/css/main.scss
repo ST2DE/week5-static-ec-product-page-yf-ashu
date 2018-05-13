@@ -1,21 +1,50 @@
 //Global
-*{
+* {
   box-sizing: border-box;
 }
-@mixin size($w,$h){
+
+@mixin size($w, $h) {
   width: $w;
   height: $h;
 }
-//Color
-$backgroundColor : #fff;
 
+//Color
+$backgroundColor: #ffffff;
 //Setting
-body,html{
-@include size(100%,100% );
+body,
+html {
+  @include size(100%, 100%);
+  background-color: $backgroundColor;
 }
-.wrapper{
+
+.wrapper {
+  @include size(100%, 100%);
   display: grid;
+  border: #000 solid 1px; 
+  grid-template-rows: 70px 40% auto;
+  grid-template-areas: "a a a" "b b b" "c c c";
+
+}
+
+.header {
+  grid-area: a;
+  border: #000 solid 1px; 
+}
+
+.main {
+  grid-area: b;
+  border: #000 solid 1px; 
+}
+
+.footer {
+  grid-area: c;
+  border: #000 solid 1px; 
 }
 
 //Header
-
+@media screen and (max-width: 600px) {
+  .wrapper {
+    border: #000 solid 1px;
+    grid-template-areas: "b b a" "b b a" "c c c";
+  }
+}
