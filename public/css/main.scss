@@ -10,35 +10,105 @@
 
 //Color
 $backgroundColor: #ffffff;
+$backgroundFooter: #f5f5f5;
+$text--dark:#181818;
+$text--gray:#999;
+$btn:#124fb4;
 //Setting
+@mixin FlexCenter() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin FlexBetween() {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin FlexLeft() {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 body,
 html {
   @include size(100%, 100%);
   background-color: $backgroundColor;
+  color: $text--dark;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Arial, sans-serif
 }
 
+a,
+a:hover,
+a:active,
+a:focus {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+.btn{
+  
+}
 .wrapper {
   @include size(100%, 100%);
   display: grid;
-  border: #000 solid 1px; 
-  grid-template-rows: 70px 40% auto;
+  border: #000 solid 1px;
+  grid-template-rows: 80px auto 20%;
   grid-template-areas: "a a a" "b b b" "c c c";
-
 }
 
 .header {
   grid-area: a;
-  border: #000 solid 1px; 
+  border: #000 solid 1px;
+  @include FlexBetween();
+  .nav {
+    @include size(auto, 100%);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    .logo {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      .logo--text {
+        margin-left: 8px;
+      }
+    }
+    .navbar a{
+      color: $text--gray;
+    }
+  }
 }
 
 .main {
   grid-area: b;
-  border: #000 solid 1px; 
+  border: #000 solid 1px;
+  .container {
+    border: 1px solid #000;
+    @include FlexCenter();
+    flex-flow: row nowrap;
+    margin: 16px;
+    img {
+      @include size(100px, 100px);
+    }
+  }
 }
 
 .footer {
   grid-area: c;
-  border: #000 solid 1px; 
+  border: #000 solid 1px;
+  background-color: $backgroundFooter;
 }
 
 //Header
